@@ -1,6 +1,6 @@
 In this project, I worked with a dataset on the housing prices in Ames, Iowa from 2001 to 2007.
 
-Using the data in the training set, I created a predictive model to predict housing prices on the test set.
+Using the data in the training set, I created a Linear Regression model to predict housing prices on the test set.
 
 
 ### Cleaning
