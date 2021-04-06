@@ -22,7 +22,7 @@ Using the data in the training set, I created a Linear Regression model to predi
 For feature selection, I tried several different methods of selecting features, here are some of the strategies used:
 - Dropping of one intercorrelated variables such as 'Year Built' and 'Garage Yr Built' to avoid collinearity
 - Dropping variables with low correlation scores with housing price (for non-categorical, as categorical one-hot encoding makes variables have low correlation as their is low variability)
-- Using the Lasso regression model, increasing the alpha until the desired number of predictors remain, then doing a polynomial relation between each variable, then lassoing the resulting variables. (gave the best results, so was the main method used)
+- Using the Lasso regression model, increasing the alpha until the desired number of predictors remain, then doing a polynomial relation between each variable, then lassoing the resulting variables. Even though this is used to reduce overfitting, it is a valid method of selecting features! It worked well and featured heavily in all of my final models.
 
 ## Different Methods and results
 
@@ -52,27 +52,28 @@ This gave a good prediction with only 23 predictors.
 As might be expected, the most important factors to a house's value were mostly linked to the Living Area and Quality ratings of the house.
 The higher the coefficient, the more important the feature.
 
-Overall Qual	20417.213314
-Gr Liv Area	17568.039780
-Kitchen Qual	6579.745551
-Garage Area	5495.220478
-Exter Qual	3916.533569
-BsmtFin SF 1	3814.388757
-Bsmt Qual	3805.994516
+- Overall Qual	20417.213314
+- Gr Liv Area	17568.039780
+- Kitchen Qual	6579.745551
+- Garage Area	5495.220478
+- Exter Qual	3916.533569
+- BsmtFin SF 1	3814.388757
+- Bsmt Qual	3805.994516
 
 
 Certain neighborhoods also had an effect on the prices,
 such as Neighborhood_StoneBrand Neighborhood_NridgHt pricing higher than others, though only in connection to certain features in the house. Gr Liv Area is probably there because its such a strong indicator on its own, but its interesting that Masonry Veneer area has a synergy with North Ridge Heights lcoation, perhaps its something that is valued more heavily in the neighborhood, or fits the design of the area.
 
-Mas Vnr Area X Neighborhood_NridgHt	3264.924939
-Gr Liv Area X Neighborhood_StoneBr	2014.132628
-Gr Liv Area X Neighborhood_NoRidge	1768.745183
-Total Bsmt SF X Neighborhood_NridgHt	1646.863268
+- Mas Vnr Area X Neighborhood_NridgHt	3264.924939
+- Gr Liv Area X Neighborhood_StoneBr	2014.132628
+- Gr Liv Area X Neighborhood_NoRidge	1768.745183
+- Total Bsmt SF X Neighborhood_NridgHt	1646.863268
 
 It was good to see that one of our aggregated values made it, for bath_agg, other features that were correlated
-bath_agg	1995.955527
-Sale Type_New	685.313395
-Fireplaces	467.917134
-Year Built	109.013330
+- bath_agg	1995.955527
+- Sale Type_New	685.313395
+- Fireplaces	467.917134
+- Year Built	109.013330
 
-
+## Summary
+Overall quite a interesting dive into predictive and interpretive models, and my first exposure to multi-linear-regression models, feature selection, feature engineering and of course, data cleaning
