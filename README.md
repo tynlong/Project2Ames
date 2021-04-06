@@ -11,12 +11,14 @@ Using the data in the training set, I created a Linear Regression model to predi
 -Missing at random, or had very few rows: Dropped
 -For values that it made sense to be connected to the area, such as Year Built and Garage Year Built, replaced with median neighbourhood values.
 
-**Conversion to numerical values**
+## Feature engineering
 - Converted the "Quality" and "Condition" columns which rated different aspects of the house(Excellent,Very Good, Good, Fair, Poor etc.) into ordinal values
 - Changed various categorical columns into one-hot-encoding
--
+- Created aggregated columns such as 'Baths agg' to count the total number of bathrooms, counting half-baths as 0.5
 
-## Feature selection
+
+
+## Feature selection 
 For feature selection, I tried several different methods of selecting features, here are some of the strategies used:
 - Dropping of one intercorrelated variables such as 'Year Built' and 'Garage Yr Built' to avoid collinearity
 - Dropping variables with low correlation scores with housing price (for non-categorical, as categorical one-hot encoding makes variables have low correlation as their is low variability)
@@ -44,4 +46,33 @@ Predictors: 23
 Private Kaggle RMSE: 31152.70464
 Public Kaggle RMSE: 33012.67842
 
-This gave a good prediction with only 23 predictors. Interesting insights
+This gave a good prediction with only 23 predictors. 
+
+### INSIGHTS
+As might be expected, the most important factors to a house's value were mostly linked to the Living Area and Quality ratings of the house.
+The higher the coefficient, the more important the feature.
+
+Overall Qual	20417.213314
+Gr Liv Area	17568.039780
+Kitchen Qual	6579.745551
+Garage Area	5495.220478
+Exter Qual	3916.533569
+BsmtFin SF 1	3814.388757
+Bsmt Qual	3805.994516
+
+
+Certain neighborhoods also had an effect on the prices,
+such as Neighborhood_StoneBrand Neighborhood_NridgHt pricing higher than others, though only in connection to certain features in the house. Gr Liv Area is probably there because its such a strong indicator on its own, but its interesting that Masonry Veneer area has a synergy with North Ridge Heights lcoation, perhaps its something that is valued more heavily in the neighborhood, or fits the design of the area.
+
+Mas Vnr Area X Neighborhood_NridgHt	3264.924939
+Gr Liv Area X Neighborhood_StoneBr	2014.132628
+Gr Liv Area X Neighborhood_NoRidge	1768.745183
+Total Bsmt SF X Neighborhood_NridgHt	1646.863268
+
+It was good to see that one of our aggregated values made it, for bath_agg, other features that were correlated
+bath_agg	1995.955527
+Sale Type_New	685.313395
+Fireplaces	467.917134
+Year Built	109.013330
+
+
